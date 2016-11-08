@@ -1,14 +1,15 @@
+/**
+ * Rachel Chiang
+ * CS 356-01
+ * Assignment 2: Mini Twitter
+ */
 package cs356.twitter.userinfo;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import javax.swing.tree.MutableTreeNode;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
-import javax.swing.event.TreeModelEvent;
-import javax.swing.event.TreeModelListener;
  
 public class UsersTree extends JPanel
 {

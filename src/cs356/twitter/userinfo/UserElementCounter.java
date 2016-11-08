@@ -1,9 +1,12 @@
+/**
+ * Rachel Chiang
+ * CS 356-01
+ * Assignment 2: Mini Twitter
+ */
 package cs356.twitter.userinfo;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class UserElementCounter implements UserElementVisitor
 {
