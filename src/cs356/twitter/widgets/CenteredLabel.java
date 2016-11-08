@@ -5,14 +5,31 @@
  */
 package cs356.twitter.widgets;
 
+//-----------------------------------imports------------------------------------
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
+/**
+ * 
+ */
 public class CenteredLabel implements Widget
 {
+//-----------------------------------field--------------------------------------
+    /**
+     * 
+     */
     private JLabel label;
     
+//---------------------------------constructor----------------------------------
+    /**
+     * 
+     * @param name
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     public CenteredLabel(String name, int x, int y, int width, int height)
     {
         label = new JLabel(name);
@@ -20,6 +37,10 @@ public class CenteredLabel implements Widget
         label.setHorizontalAlignment(SwingConstants.CENTER);
     }
     
+//-----------------------------------methods------------------------------------
+    /**
+     * 
+     */
     @Override
     public JComponent getJComponent()
     {

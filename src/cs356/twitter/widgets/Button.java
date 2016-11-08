@@ -4,16 +4,35 @@
  * Assignment 2: Mini Twitter
  */
 package cs356.twitter.widgets;
+
+//-----------------------------------imports------------------------------------
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
 
-
+/**
+ * 
+ */
 public class Button implements Widget
 {
+//-----------------------------------field--------------------------------------
+    /**
+     * 
+     */
     private JButton button;
     
+//---------------------------------constructor----------------------------------
+    /**
+     * 
+     * @param name
+     * @param command
+     * @param listener
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     */
     public Button(String name,
             String command,
             ActionListener listener,
@@ -27,7 +46,11 @@ public class Button implements Widget
         button.addActionListener(listener);
         button.setBounds(x, y, width, height);
     }
-
+    
+//-----------------------------------methods------------------------------------
+    /**
+     * 
+     */
     @Override
     public JComponent getJComponent()
     {

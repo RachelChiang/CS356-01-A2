@@ -5,9 +5,13 @@
  */
 package cs356.twitter.userinfo;
 
+/**
+ * The observer interface. An observer must be updated. In this assignment, a
+ * list of followers must also be saved.
+ */
 public interface Observer
 {
+//-----------------------------------methods------------------------------------
     public void update(Subject subject);
-    
     public void addToFollowing(Subject subject);
 }

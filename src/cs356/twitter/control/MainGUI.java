@@ -33,9 +33,8 @@ import cs356.twitter.userinfo.*;
  *         3. Finding the total number of messages
  *         4. Finding the percentage of positive messages
  */
-public class MainGUI extends JPanel implements ActionListener
+public class MainGUI implements ActionListener
     {
-    
 //-----------------------------------fields-------------------------------------
     /**
      * One of the core aspects of a singleton design pattern: the protected
@@ -150,7 +149,8 @@ public class MainGUI extends JPanel implements ActionListener
      * This method helps {@link #MainGUI()} create the widgets that fill the
      * window. It looks somewhat more compact like this, I think. I did not
      * particularly like the look and feel of four to six lines to initialize
-     * all of the widgets.
+     * all of the widgets. Like the composite design pattern demonstrated in
+     * class.
      */
     private void makeWidgets()
     {
@@ -332,7 +332,7 @@ public class MainGUI extends JPanel implements ActionListener
                         new UserGUI((User) selectedElement.getUserObject(), 
                                     treePanel, xyOffset+=10, statsTextArea);
                 // the QOL improvement becomes a !QOL improvement if it offsets
-                // too far.
+                // too much.
                 if (xyOffset >= 170)
                 {
                     xyOffset = 0;

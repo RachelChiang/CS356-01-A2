@@ -4,6 +4,8 @@
  * Assignment 2: Mini Twitter
  */
 package cs356.twitter.userinfo;
+
+//-----------------------------------imports------------------------------------
 import javax.swing.JPanel;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -11,12 +13,31 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import javax.swing.tree.TreeSelectionModel;
  
+/**
+ * 
+ */
 public class UsersTree extends JPanel
 {
-    protected DefaultMutableTreeNode rootNode;
-    protected DefaultTreeModel treeModel;
-    protected JTree tree;
- 
+//-----------------------------------fields-------------------------------------
+    /**
+     * 
+     */
+    private DefaultMutableTreeNode rootNode;
+    
+    /**
+     * 
+     */
+    private DefaultTreeModel treeModel;
+    
+    /**
+     * 
+     */
+    private JTree tree;
+    
+//---------------------------------constructor----------------------------------
+    /**
+     * 
+     */
     public UsersTree()
     {
         setLayout(null);
@@ -30,11 +51,7 @@ public class UsersTree extends JPanel
         tree.setShowsRootHandles(true);
     }
     
-    public JTree getTree()
-    {
-        return tree;
-    }
-
+//-----------------------------------methods------------------------------------
     /** Add child to the currently selected node. */
     public DefaultMutableTreeNode addObject(UserElement child)
     {
@@ -42,7 +59,13 @@ public class UsersTree extends JPanel
  
         return addObject(parentNode, child);
     }
- 
+    
+    /**
+     * 
+     * @param parent
+     * @param child
+     * @return
+     */
     public DefaultMutableTreeNode addObject(DefaultMutableTreeNode parent,
                                             UserElement child)
     {
@@ -50,22 +73,22 @@ public class UsersTree extends JPanel
         {
             return null;
         }
-        
+
         DefaultMutableTreeNode childNode = 
                 new DefaultMutableTreeNode(child);
-        
+
         if (parent == null)
         {
             parent = rootNode;
         }
-        
+
         if (parent.getUserObject() instanceof UserGroup)
         {
             treeModel.insertNodeInto(childNode, parent, 
-                                     parent.getChildCount());
-                 
-                tree.scrollPathToVisible(new TreePath(childNode.getPath()));
-            
+                    parent.getChildCount());
+
+            tree.scrollPathToVisible(new TreePath(childNode.getPath()));
+
             return childNode;
         }
         else
@@ -74,6 +97,71 @@ public class UsersTree extends JPanel
         }
     }
     
+    /**
+     * 
+     * @param visitor
+     */
+    public void accept(UserElementVisitor visitor)
+    {
+        DefaultMutableTreeNode current = rootNode.getNextNode();
+        while (current != null)
+        {
+            ((UserElement) current.getUserObject()).accept(visitor);
+            current = current.getNextNode();
+        }
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public JTree getTree()
+    {
+        return tree;
+    }
+    
+    /**
+     * 
+     * @return
+     */
+    public DefaultMutableTreeNode getSelected()
+    {
+        DefaultMutableTreeNode node = getParentNode();
+        if (node.getUserObject() instanceof UserGroup)
+        {
+            return null;
+        }
+        else
+        {
+            return node;
+        }
+    }
+    
+    /**
+     * 
+     * @param name
+     * @return
+     */
+    public UserElement getUser(String name)
+    {
+        DefaultMutableTreeNode current = rootNode;
+        UserElement desired = null;
+        while (current != null)
+        {
+            if (current.getUserObject().toString().equalsIgnoreCase(name))
+            {
+                desired = (UserElement) current.getUserObject();
+            }
+            current = current.getNextNode();
+        }
+        
+        return desired;
+    }
+    
+    /**
+     * 
+     * @return
+     */
     private DefaultMutableTreeNode getParentNode()
     {
         TreePath parentPath = tree.getSelectionPath();
@@ -93,51 +181,17 @@ public class UsersTree extends JPanel
         return parentNode;
     }
     
-    public DefaultMutableTreeNode getSelected()
-    {
-        DefaultMutableTreeNode node = getParentNode();
-        if (node.getUserObject() instanceof UserGroup)
-        {
-            return null;
-        }
-        else
-        {
-            return node;
-        }
-    }
-    
-    public UserElement findUser(String name)
-    {
-        DefaultMutableTreeNode current = rootNode;
-        UserElement desired = null;
-        while (current != null)
-        {
-            if (current.getUserObject().toString().equalsIgnoreCase(name))
-            {
-                desired = (UserElement) current.getUserObject();
-            }
-            current = current.getNextNode();
-        }
-        
-        return desired;
-    }
-    
+    /**
+     * 
+     * @param name
+     * @return
+     */
     private boolean exists(String name)
     {
-        if (findUser(name) == null)
+        if (getUser(name) == null)
         {
             return false;
         }
         return true;
-    }
-    
-    public void accept(UserElementVisitor visitor)
-    {
-        DefaultMutableTreeNode current = rootNode.getNextNode();
-        while (current != null)
-        {
-            ((UserElement) current.getUserObject()).accept(visitor);
-            current = current.getNextNode();
-        }
     }
 }
