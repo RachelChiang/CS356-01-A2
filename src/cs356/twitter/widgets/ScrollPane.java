@@ -12,19 +12,22 @@ import javax.swing.JComponent;
 import javax.swing.JScrollPane;
 
 /**
- * 
+ * This method is a simple Button. It's really just a JButton but made so that a
+ * JScrollPane can be created in a more compact way and added to a JFrames JPanel
+ * more easily.
  */
 public class ScrollPane implements Widget
 {
 //-----------------------------------field--------------------------------------
     /**
-     * 
+     * This is simply the {@link #scrollPane}
      */
     JScrollPane scrollPane;
     
 //---------------------------------constructor----------------------------------
     /**
-     * 
+     * As with the rest, of the {@link Widget}s, this constructor allows the
+     * creation of the widget to be done in one declaration.
      * @param x
      * @param y
      * @param width
@@ -40,7 +43,7 @@ public class ScrollPane implements Widget
     
 //-----------------------------------methods------------------------------------
     /**
-     * 
+     * This simply returns the {@link #scrollPane}
      */
     @Override
     public JComponent getJComponent()

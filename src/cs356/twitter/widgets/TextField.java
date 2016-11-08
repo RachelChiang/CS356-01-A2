@@ -10,19 +10,22 @@ import javax.swing.JComponent;
 import javax.swing.JTextField;
 
 /**
- * 
+ * This method is a simple Button. It's really just a JButton but made so that a
+ * JTextField can be created in a more compact way and added to a JFrames JPanel
+ * more easily.
  */
 public class TextField implements Widget
 {
 //-----------------------------------field--------------------------------------
     /**
-     * 
+     * The JTextField
      */
     private JTextField textField;
     
 //---------------------------------constructor----------------------------------
     /**
-     * 
+     * This constructor initializes the {@link #textField} as needed in one
+     * declaration
      * @param name
      * @param x
      * @param y
@@ -41,7 +44,8 @@ public class TextField implements Widget
     
 //-----------------------------------methods------------------------------------
     /**
-     * 
+     * This is a sort of QOL method. It exists because I got tired of
+     * manually clearing a JTextField after successfully inputting a string.
      */
     public void clear()
     {
@@ -49,16 +53,16 @@ public class TextField implements Widget
     }
     
     /**
-     * 
+     * This simply returns the {@link #textField}
      */
+    @Override
     public JComponent getJComponent()
     {
         return textField;
     }
     
     /**
-     * 
-     * @return
+     * This method simply returns the text in the {@link #textField}.
      */
     public String getTFText()
     {

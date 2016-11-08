@@ -11,19 +11,21 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 /**
- * 
+ * This method is a simple Button. It's really just a JButton but made so that a
+ * JLabel can be created in a more compact way and added to a JFrames JPanel
+ * more easily.
  */
 public class CenteredLabel implements Widget
 {
 //-----------------------------------field--------------------------------------
     /**
-     * 
+     * The JLabel
      */
     private JLabel label;
     
 //---------------------------------constructor----------------------------------
     /**
-     * 
+     * This constructor sets up the {@link #label} in one declaration.
      * @param name
      * @param x
      * @param y
@@ -39,7 +41,7 @@ public class CenteredLabel implements Widget
     
 //-----------------------------------methods------------------------------------
     /**
-     * 
+     * Simple getter for {@link #label}.
      */
     @Override
     public JComponent getJComponent()

@@ -12,19 +12,21 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 
 /**
- * 
+ * This method is a simple Button. It's really just a JButton but made so that a
+ * JButton can be created in a more compact way and added to a JFrames JPanel
+ * more easily.
  */
 public class Button implements Widget
 {
 //-----------------------------------field--------------------------------------
     /**
-     * 
+     * The JButton.
      */
     private JButton button;
     
 //---------------------------------constructor----------------------------------
     /**
-     * 
+     * This constructor sets up the JButton that is needed in one declaration.
      * @param name
      * @param command
      * @param listener
@@ -49,7 +51,8 @@ public class Button implements Widget
     
 //-----------------------------------methods------------------------------------
     /**
-     * 
+     * This method just returns the {@link #JComponent} which in this case is 
+     * simply the {@link #button}.
      */
     @Override
     public JComponent getJComponent()
