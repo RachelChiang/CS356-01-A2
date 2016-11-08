@@ -21,7 +21,8 @@ public class User extends Subject implements UserElement, Observer
 {
 //-----------------------------------fields-------------------------------------
     /**
-     * 
+     * This field is the username, which must be unique and is enforced in the
+     * {@link MainGUI}.
      */
     private String username;
     
